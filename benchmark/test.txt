@@ -1,0 +1,19 @@
+{
+    "Device": "auto",
+    "RequestId": "1GUID13",
+    "QueueLen": 100,
+    "Password": 1,
+    "Lines": [{
+    "Qty": 2500,
+    "Price": 10000,
+    "PayAttribute": 4,
+    "TaxId": 1,
+    "Description": "Булочка с маком"
+}
+],
+    "Cash": 200000,
+    "NonCash": [2000, 3000, 4000],
+    "TaxMode": 1,
+    "PhoneOrEmail": "kozlov@starrys.ru",
+    "FullResponse": false
+}
