@@ -1,11 +1,16 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 /**
  * Таблица 26 Расширенные сообщения об ошибках
  * <p>
  * Enumeration of json API  error codes.
  */
+@Getter
+@RequiredArgsConstructor
 public enum JsonApiErrors {
 
     ERROR_NO_MORE(0, "Ошибок не обнаружено"),
@@ -80,29 +85,6 @@ public enum JsonApiErrors {
 
     private final int code;
     private final String message;
-
-    JsonApiErrors(int code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
-    /**
-     * Return the integer value of this error code.
-     *
-     * @return int
-     */
-    public int getCode() {
-        return code;
-    }
-
-    /**
-     * Return the message of this error code.
-     *
-     * @return String
-     */
-    public String getMessage() {
-        return message;
-    }
 
     /**
      * Return the enum constant of this type with the specified numeric value.

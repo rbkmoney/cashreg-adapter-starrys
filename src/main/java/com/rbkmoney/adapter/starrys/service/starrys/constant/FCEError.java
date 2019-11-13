@@ -1,8 +1,13 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 /**
  * Таблица 4: Ошибки сервера FCE
  */
+@Getter
+@RequiredArgsConstructor
 public enum FCEError {
 
     ERROR_READING_REQUEST(1, "Ошибка чтения запроса"),
@@ -30,28 +35,6 @@ public enum FCEError {
     private final int code;
     private final String message;
 
-    FCEError(int code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
-    /**
-     * Return the integer value of this error code.
-     *
-     * @return int
-     */
-    public int getCode() {
-        return code;
-    }
-
-    /**
-     * Return the message of this error code.
-     *
-     * @return String
-     */
-    public String getMessage() {
-        return message;
-    }
 
     /**
      * Return the enum constant of this type with the specified numeric value.

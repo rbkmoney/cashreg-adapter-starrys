@@ -1,8 +1,6 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
-/**
- * Комманды
- */
+
 public class Command {
 
     /**

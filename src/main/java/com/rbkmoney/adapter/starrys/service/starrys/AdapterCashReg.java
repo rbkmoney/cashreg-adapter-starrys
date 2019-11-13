@@ -1,18 +1,19 @@
 package com.rbkmoney.adapter.starrys.service.starrys;
 
-import com.rbkmoney.cashreg.proto.provider.CashRegContext;
-import org.springframework.http.ResponseEntity;
+import com.rbkmoney.adapter.starrys.service.starrys.model.request.ComplexRequest;
+import com.rbkmoney.adapter.starrys.service.starrys.model.request.RequestWrapper;
+import com.rbkmoney.adapter.starrys.service.starrys.model.response.FullResponse;
 
 public interface AdapterCashReg {
 
-    ResponseEntity<?> debit(CashRegContext context);
+    FullResponse debit(RequestWrapper<ComplexRequest> request);
 
-    ResponseEntity<?> credit(CashRegContext context);
+    FullResponse credit(RequestWrapper<ComplexRequest> request);
 
-    ResponseEntity<?> refundDebit(CashRegContext context);
+    FullResponse refundDebit(RequestWrapper<ComplexRequest> request);
 
-    ResponseEntity<?> refundCredit(CashRegContext context);
+    FullResponse refundCredit(RequestWrapper<ComplexRequest> request);
 
-    ResponseEntity<?> getStatus(CashRegContext context);
+    FullResponse status(RequestWrapper<ComplexRequest> request);
 
 }

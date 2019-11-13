@@ -53,7 +53,7 @@ public class Status {
     /**
      * Последнее состояние принтера (см.табл.5)
      *
-     * @see com.rbkmoney.starrys.cashreg.starrys.constant.PrinterStatus
+     * @see com.rbkmoney.adapter.starrys.service.starrys.constant.PrinterStatus
      */
     @JsonProperty("LastPrinterStatus")
     private String lastPrinterStatus;
@@ -73,7 +73,7 @@ public class Status {
     /**
      * Текущий статус принтера (см.табл.5)
      *
-     * @see com.rbkmoney.starrys.cashreg.starrys.constant.PrinterStatus
+     * @see com.rbkmoney.adapter.starrys.service.starrys.constant.PrinterStatus
      */
     @JsonProperty("CurrentPrinterStatus")
     private String currentPrinterStatus;

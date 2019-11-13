@@ -24,10 +24,9 @@ restTemplate:
 converterIp:
   nat64prefix: "2a04:4a00:5:10ff:4:1:"
 ---
-restTemplate:
-  connectTimeout: 3000
-  connectionRequestTimeout: 60000
-  readTimeout: 60000
----
-starrys:
+adapter-cashreg:
   url: "https://fce.starrys.ru:4443/fr/api/v2/"
+---
+error-mapping:
+  file: classpath:fixture/errors.json
+  patternReason: "'%s' - '%s'" # 'code' - 'description'

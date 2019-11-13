@@ -9,7 +9,6 @@ import com.rbkmoney.adapter.starrys.service.starrys.constant.PayAttribute;
 import com.rbkmoney.adapter.starrys.service.starrys.constant.TaxId;
 import com.rbkmoney.adapter.starrys.service.starrys.model.DateTime;
 import com.rbkmoney.adapter.starrys.service.starrys.model.FiscalDocument;
-import com.rbkmoney.cashreg.proto.provider.TaxMode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -186,7 +185,7 @@ public class Response {
     /**
      * Режим налогооблажения
      *
-     * @see TaxMode
+     * @see com.rbkmoney.adapter.starrys.service.starrys.constant.TaxMode
      */
     @JsonProperty("TaxMode")
     private Integer taxMode;

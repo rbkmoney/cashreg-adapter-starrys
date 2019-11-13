@@ -2,12 +2,11 @@ package com.rbkmoney.adapter.starrys.service.starrys;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rbkmoney.adapter.starrys.configuration.properties.StarrysProperties;
+import com.rbkmoney.adapter.cashreg.spring.boot.starter.utils.converter.ip.ConverterIp;
 import com.rbkmoney.adapter.starrys.service.starrys.constant.Operations;
 import com.rbkmoney.adapter.starrys.service.starrys.model.request.ComplexRequest;
-import com.rbkmoney.adapter.starrys.service.starrys.model.request.IRequest;
+import com.rbkmoney.adapter.starrys.service.starrys.model.request.RequestWrapper;
 import com.rbkmoney.adapter.starrys.service.starrys.model.response.FullResponse;
-import com.rbkmoney.adapter.starrys.utils.ConverterIp;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -16,37 +15,40 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
-@Setter
 @Getter
+@Setter
 @RequiredArgsConstructor
 public class StarRysApi {
 
-    private String url = "https://fce.starrys.ru:4443/fr/api/v2/";
     private int password;
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private final ConverterIp converterIp;
-    private final StarrysProperties starrysProperties;
 
-    public ResponseEntity<FullResponse> complex(ComplexRequest request) throws JsonProcessingException {
-        return send(request, Operations.COMPLEX);
+    public ResponseEntity<FullResponse> complex(RequestWrapper<ComplexRequest> requestWrapper) {
+        return send(requestWrapper, Operations.COMPLEX);
     }
 
-    private ResponseEntity send(IRequest request, String operation) throws JsonProcessingException {
-        String body = objectMapper.writeValueAsString(request);
-        String prepareUrl = prepareUrl(operation);
+    private ResponseEntity send(RequestWrapper<ComplexRequest> requestWrapper, String operation) {
+        String body;
+        try {
+            body = objectMapper.writeValueAsString(requestWrapper.getRequest());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        String prepareUrl = prepareUrl(operation, requestWrapper.getUrl());
         log.info("{}, {} with request: {}", operation, prepareUrl, body);
         HttpEntity httpEntity = new HttpEntity(body, getHttpHeaders());
         ResponseEntity<FullResponse> responseEntity = restTemplate.exchange(
-                url, HttpMethod.POST, httpEntity, FullResponse.class
+                prepareUrl, HttpMethod.POST, httpEntity, FullResponse.class
         );
         log.info("{} with response: {}", operation, responseEntity);
         return responseEntity;
     }
 
-    private String prepareUrl(String operation) {
-        return converterIp.replaceIpv4ToIpv6(getUrl() + operation);
+    private String prepareUrl(String operation, String url) {
+        return converterIp.replaceIpv4ToIpv6(url + operation);
     }
 
     private HttpHeaders getHttpHeaders() {

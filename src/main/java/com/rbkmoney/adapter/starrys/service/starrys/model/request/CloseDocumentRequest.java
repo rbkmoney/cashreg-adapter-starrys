@@ -23,7 +23,7 @@ public class CloseDocumentRequest extends Request {
     /**
      * Массив из 3-х элементов с суммами оплат 3-х типов
      *
-     * @see com.rbkmoney.starrys.cashreg.starrys.constant.NonCashType
+     * @see com.rbkmoney.adapter.starrys.service.starrys.constant.NonCashType
      */
     @JsonProperty("NonCash")
     private Integer[] nonCash;
@@ -45,7 +45,7 @@ public class CloseDocumentRequest extends Request {
      * true   Не извлекать;
      * false   Извлекать
      *
-     * @see com.rbkmoney.starrys.cashreg.starrys.constant.NoFetch
+     * @see com.rbkmoney.adapter.starrys.service.starrys.constant.NoFetch
      */
     @JsonProperty("NoFetch")
     private Integer noFetch;
@@ -55,7 +55,7 @@ public class CloseDocumentRequest extends Request {
      * true - Не сохранять
      * false - сохранять
      *
-     * @see com.rbkmoney.starrys.cashreg.starrys.constant.NoRender
+     * @see com.rbkmoney.adapter.starrys.service.starrys.constant.NoRender
      */
     @JsonProperty("NoRender")
     private boolean noRender;

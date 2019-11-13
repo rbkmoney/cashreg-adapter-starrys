@@ -25,7 +25,7 @@ public class AddLineToDocumentRequest extends Request {
 
     /**
      * Тип чека для добавляемой товарной позиции
-     * {@link com.rbkmoney.starrys.cashreg.starrys.constant.DocumentType}
+     * {@link com.rbkmoney.adapter.starrys.service.starrys.constant.DocumentType}
      */
     @JsonProperty("DocumentType")
     private int documentType;
@@ -46,7 +46,7 @@ public class AddLineToDocumentRequest extends Request {
 
     /**
      * Признак способа расчёта
-     * {@link com.rbkmoney.starrys.cashreg.starrys.constant.PayAttribute}
+     * {@link com.rbkmoney.adapter.starrys.service.starrys.constant.PayAttribute}
      */
     @JsonProperty("PayAttribute")
     private Integer payAttribute;
@@ -54,7 +54,7 @@ public class AddLineToDocumentRequest extends Request {
     /**
      * Код налога
      *
-     * @see com.rbkmoney.starrys.cashreg.starrys.constant.TaxId
+     * @see com.rbkmoney.adapter.starrys.service.starrys.constant.TaxId
      */
     @JsonProperty("TaxId")
     private Integer taxId;
