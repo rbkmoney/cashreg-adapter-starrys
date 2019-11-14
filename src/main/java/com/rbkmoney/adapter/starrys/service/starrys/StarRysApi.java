@@ -30,7 +30,7 @@ public class StarRysApi {
         return send(requestWrapper, Operations.COMPLEX);
     }
 
-    private ResponseEntity send(RequestWrapper<ComplexRequest> requestWrapper, String operation) {
+    private ResponseEntity<FullResponse> send(RequestWrapper<ComplexRequest> requestWrapper, String operation) {
         String body;
         try {
             body = objectMapper.writeValueAsString(requestWrapper.getRequest());

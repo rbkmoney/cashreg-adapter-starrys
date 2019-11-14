@@ -10,13 +10,14 @@ import com.rbkmoney.adapter.starrys.service.starrys.model.response.FullResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseEntity;
 
 @Configuration
 @RequiredArgsConstructor
 public class ProcessorConfiguration {
 
     @Bean
-    public Processor<ExitStateModel, EntryStateModel, FullResponse> responseProcessorChain() {
+    public Processor<ExitStateModel, EntryStateModel, ResponseEntity<FullResponse>> responseProcessorChain() {
         ErrorProcessor errorProcessor = new ErrorProcessor();
         return new SuccessProcessor(errorProcessor);
     }

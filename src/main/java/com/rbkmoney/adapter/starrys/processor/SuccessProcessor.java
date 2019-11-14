@@ -10,23 +10,26 @@ import com.rbkmoney.adapter.starrys.service.starrys.model.response.Response;
 import com.rbkmoney.adapter.starrys.utils.ErrorUtils;
 import com.rbkmoney.damsel.cashreg.CashRegInfo;
 import lombok.RequiredArgsConstructor;
+import org.apache.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RequiredArgsConstructor
-public class SuccessProcessor implements Processor<ExitStateModel, EntryStateModel, FullResponse> {
+public class SuccessProcessor implements Processor<ExitStateModel, EntryStateModel, ResponseEntity<FullResponse>> {
 
-    private final Processor<ExitStateModel, EntryStateModel, FullResponse> nextProcessor;
+    private final Processor<ExitStateModel, EntryStateModel, ResponseEntity<FullResponse>> nextProcessor;
 
     @Override
-    public ExitStateModel process(FullResponse fullResponse, EntryStateModel entryStateModel) {
-        if (!ErrorUtils.hasError(fullResponse)) {
+    public ExitStateModel process(ResponseEntity<FullResponse> responseEntity, EntryStateModel entryStateModel) {
+        if (!ErrorUtils.hasError(responseEntity)) {
             ExitStateModel exitStateModel = new ExitStateModel();
             exitStateModel.setEntryStateModel(entryStateModel);
 
             AdapterState adapterState = entryStateModel.getState().getAdapterContext();
+            FullResponse fullResponse = responseEntity.getBody();
             adapterState.setReceiptId(fullResponse.getRequestId());
             adapterState.setCashRegId(entryStateModel.getCashRegId());
 
-            if(fullResponse.getResponse() != null) {
+            if (isDelivered(responseEntity)) {
                 Response response = fullResponse.getResponse();
                 CashRegInfo cashRegInfo = new CashRegInfo();
                 cashRegInfo.setReceiptId(response.getRequestId());
@@ -36,12 +39,16 @@ public class SuccessProcessor implements Processor<ExitStateModel, EntryStateMod
                 exitStateModel.setCashRegInfo(cashRegInfo);
             }
 
-
             exitStateModel.setAdapterContext(adapterState);
             return exitStateModel;
         }
 
-        return nextProcessor.process(fullResponse, entryStateModel);
+        return nextProcessor.process(responseEntity, entryStateModel);
+    }
+
+    public boolean isDelivered(ResponseEntity<FullResponse> entity) {
+        FullResponse fullResponse = entity.getBody();
+        return  HttpStatus.SC_OK == entity.getStatusCode().value() && fullResponse.getResponse().getError() == 0;
     }
 
 }

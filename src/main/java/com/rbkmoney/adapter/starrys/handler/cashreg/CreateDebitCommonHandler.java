@@ -12,16 +12,17 @@ import com.rbkmoney.adapter.starrys.service.starrys.model.request.ComplexRequest
 import com.rbkmoney.adapter.starrys.service.starrys.model.request.RequestWrapper;
 import com.rbkmoney.adapter.starrys.service.starrys.model.response.FullResponse;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class CreateDebitCommonHandler extends CommonHandlerImpl<ExitStateModel, RequestWrapper<ComplexRequest>, FullResponse, EntryStateModel> {
+public class CreateDebitCommonHandler extends CommonHandlerImpl<ExitStateModel, RequestWrapper<ComplexRequest>, ResponseEntity<FullResponse>, EntryStateModel> {
 
     public CreateDebitCommonHandler(
             StarRysClient client,
             Converter<EntryStateModel, RequestWrapper<ComplexRequest>> converter,
-            Processor<ExitStateModel, EntryStateModel, FullResponse> responseProcessorChain
+            Processor<ExitStateModel, EntryStateModel, ResponseEntity<FullResponse>> responseProcessorChain
     ) {
         super(client::debit, converter, responseProcessorChain);
     }

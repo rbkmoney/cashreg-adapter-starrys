@@ -8,13 +8,14 @@ import com.rbkmoney.adapter.starrys.service.starrys.model.response.FullResponse;
 import com.rbkmoney.adapter.starrys.utils.ErrorUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 
 @Slf4j
 @RequiredArgsConstructor
-public class ErrorProcessor implements Processor<ExitStateModel, EntryStateModel, FullResponse> {
+public class ErrorProcessor implements Processor<ExitStateModel, EntryStateModel, ResponseEntity<FullResponse>> {
 
     @Override
-    public ExitStateModel process(FullResponse response, EntryStateModel entryStateModel) {
+    public ExitStateModel process(ResponseEntity<FullResponse> response, EntryStateModel entryStateModel) {
         ExitStateModel exitStateModel = new ExitStateModel();
         if (ErrorUtils.hasError(response)) {
             exitStateModel.setEntryStateModel(entryStateModel);
