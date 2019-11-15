@@ -43,7 +43,7 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
         request.setPassword(Integer.valueOf(entryStateModel.getAuth().getPass()));
         request.setFullResponse(FullResponseType.FALSE);
 
-        request.setCash(entryStateModel.getTotal().movePointRight(2).toBigInteger());
+        request.setCash(prepareAmount(entryStateModel.getTotal()));
 
         /**
          * CARD / ECASH / OTHER
@@ -110,7 +110,7 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
     private Lines getLines(Map<String, String> options, Items items) {
         Lines lines = new Lines();
         lines.setQty(items.getQuantity().multiply(new BigDecimal(1000)).toBigInteger());
-        lines.setPrice(items.getPrice().movePointRight(2).toBigInteger());
+        lines.setPrice(prepareAmount(items.getPrice()));
 
         if (options.get(com.rbkmoney.adapter.starrys.service.starrys.constant.OptionalField.PAYMENT_TYPE.getField()) != null) {
             lines.setPayAttribute(Integer.valueOf(options.get(com.rbkmoney.adapter.starrys.service.starrys.constant.OptionalField.PAYMENT_TYPE.getField())));
@@ -128,6 +128,10 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
         lines.setDescription(items.getName());
 
         return lines;
+    }
+
+    private BigInteger prepareAmount(BigDecimal amount) {
+        return amount.movePointRight(2).toBigInteger();
     }
 
 }
