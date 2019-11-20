@@ -14,15 +14,9 @@ import lombok.ToString;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DateTime {
 
-    /**
-     * Дата
-     */
     @JsonProperty("Date")
     private Date date;
 
-    /**
-     * Время
-     */
     @JsonProperty("Time")
     private Time time;
 

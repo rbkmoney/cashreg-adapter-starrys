@@ -1,13 +1,15 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
-/**
- * Операции с фискальным аппаратом
- */
-public class Operations {
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-    /**
-     * Комплексная команда создания чека Complex
-     */
-    public static final String COMPLEX = "Complex";
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public enum Operations {
+
+    COMPLEX("Complex");
+
+    private final String name;
 
 }

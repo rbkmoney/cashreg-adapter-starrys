@@ -1,28 +1,36 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * Таблица 32: Типы оплат
  */
-public class NonCashType {
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public enum NonCashType {
 
     /**
      * Наличными
      */
-    public static final int CASH = 1;
+    CASH(1),
 
     /**
      * Картой
      */
-    public static final int CARD = 2;
+    CARD(2),
 
     /**
      * Электронным денежным средством
      */
-    public static final int ECASH = 3;
+    ECASH(3),
 
     /**
      * Иным электронным платежным средством
      */
-    public static final int OTHER = 4;
+    OTHER(4);
+
+    private final int value;
 
 }

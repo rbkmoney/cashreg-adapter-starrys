@@ -39,24 +39,15 @@ public class FullResponse {
     @JsonProperty("ErrorDescription")
     private String errorDescription;
 
-    /**
-     * @see Response
-     */
     @JsonProperty("Response")
     private Response response;
 
     @JsonProperty("ServerQueueLen")
     private Integer serverQueueLen;
 
-    /**
-     * @see FirstRequest
-     */
     @JsonProperty("FirstRequest")
     private FirstRequest firstRequest;
 
-    /**
-     * @see Response
-     */
     @JsonProperty("Responses")
     private List<Responses> responses;
 

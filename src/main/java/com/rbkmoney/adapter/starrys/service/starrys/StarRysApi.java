@@ -20,14 +20,12 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 public class StarRysApi {
 
-    private int password;
-
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private final ConverterIp converterIp;
 
     public ResponseEntity<FullResponse> complex(RequestWrapper<ComplexRequest> requestWrapper) {
-        return send(requestWrapper, Operations.COMPLEX);
+        return send(requestWrapper, Operations.COMPLEX.getName());
     }
 
     private ResponseEntity<FullResponse> send(RequestWrapper<ComplexRequest> requestWrapper, String operation) {

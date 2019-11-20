@@ -14,21 +14,12 @@ import lombok.ToString;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Date {
 
-    /**
-     * День
-     */
     @JsonProperty("Day")
     private Integer day;
 
-    /**
-     * Месяц
-     */
     @JsonProperty("Month")
     private Integer month;
 
-    /**
-     * Год
-     */
     @JsonProperty("Year")
     private Integer year;
 

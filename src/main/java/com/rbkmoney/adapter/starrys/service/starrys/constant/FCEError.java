@@ -35,14 +35,6 @@ public enum FCEError {
     private final int code;
     private final String message;
 
-
-    /**
-     * Return the enum constant of this type with the specified numeric value.
-     *
-     * @param errorCode the numeric value of the enum to be returned
-     * @return the enum constant with the specified numeric value
-     * @throws IllegalArgumentException if this enum has no constant for the specified numeric value
-     */
     public static FCEError valueOf(int errorCode) {
         for (FCEError errors : values()) {
             if (errors.code == errorCode) {

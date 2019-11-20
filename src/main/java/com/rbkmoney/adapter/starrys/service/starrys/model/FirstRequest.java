@@ -14,21 +14,12 @@ import lombok.ToString;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FirstRequest {
 
-    /**
-     * Уникальный идентификатор запроса
-     */
     @JsonProperty("RequestId")
     private String requestId;
 
-    /**
-     * @see Date
-     */
     @JsonProperty("Date")
     private Date date;
 
-    /**
-     * @see Time
-     */
     @JsonProperty("Time")
     private Time time;
 

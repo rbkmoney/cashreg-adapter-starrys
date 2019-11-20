@@ -1,43 +1,51 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * Таблица 8. Типы оплат в сменном отчёте
  */
-public class Pay {
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public enum Pay {
 
     /**
      * Наличными
      */
-    public static final int CASH = 1;
+    CASH(1),
 
     /**
      * 1-й тип оплаты
      */
-    public static final int PAYMENT_TYPE_1 = 2;
+    PAYMENT_TYPE_1(2),
 
     /**
      * 2-й тип оплаты
      */
-    public static final int PAYMENT_TYPE_2 = 3;
+    PAYMENT_TYPE_2(3),
 
     /**
      * 3-й тип оплаты
      */
-    public static final int PAYMENT_TYPE_3 = 4;
+    PAYMENT_TYPE_3(4),
 
     /**
      * Предоплатой (зачётом аванса)
      */
-    public static final int ADVANCE_PAYMENT = 5;
+    ADVANCE_PAYMENT(5),
 
     /**
      * Постоплатой (в кредит)
      */
-    public static final int POSTPAY_ON_CREDIT_ = 6;
+    POST_PAY_ON_CREDIT(6),
 
     /**
      * Встречным предоставлением
      */
-    public static final int COUNTER_PROVISION = 7;
+    COUNTER_PROVISION(7);
+
+    private final int value;
 
 }

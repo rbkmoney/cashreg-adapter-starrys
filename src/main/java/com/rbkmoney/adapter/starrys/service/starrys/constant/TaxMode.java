@@ -1,8 +1,5 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
-/**
- * Таблица 11. Режим налогообложения
- */
 public class TaxMode {
 
     /**

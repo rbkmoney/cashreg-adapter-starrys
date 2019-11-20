@@ -1,9 +1,15 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * Таблица 33. Налоги
  * Value Added Tax (VAT) – налог на добавленную стоимость (НДС)
  */
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class TaxId {
 
     public static final int VAT_18 = 1;

@@ -5,8 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * Таблица 25: Коды ошибок устройства
- * <p>
- * Enumeration of Device error codes.
  */
 @Getter
 @RequiredArgsConstructor

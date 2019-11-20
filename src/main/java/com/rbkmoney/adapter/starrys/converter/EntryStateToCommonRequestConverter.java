@@ -115,7 +115,7 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
         if (options.get(com.rbkmoney.adapter.starrys.service.starrys.constant.OptionalField.PAYMENT_TYPE.getField()) != null) {
             lines.setPayAttribute(Integer.valueOf(options.get(com.rbkmoney.adapter.starrys.service.starrys.constant.OptionalField.PAYMENT_TYPE.getField())));
         } else {
-            lines.setPayAttribute(PayAttribute.FULL_PAYMENT_BEFORE);
+            lines.setPayAttribute(PayAttribute.FULL_PAYMENT_BEFORE.getValue());
         }
 
         // TODO: check

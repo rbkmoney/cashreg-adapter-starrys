@@ -1,56 +1,22 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
-/**
- * Таблица 9. Признак способа расчёта
- * Указывается для каждого товара
- */
-public class PayAttribute {
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-    /**
-     * Для индивидуальных предпринимателей, являющихся налогоплательщиками,
-     * применяющими патентную систему налогообложения и упрощённую систему налогообложения,
-     * а также индивидуальных предпринимателей, применяющих систему налогообложения для сельскохозяйственных товаропроизводителей,
-     * систему налогообложения в виде единого налога на вменённый доход для отдельных видов деятельности
-     * при осуществлении видов предпринимательской деятельности, установленных пунктом 2 статьи 346.26 Налогового кодекса Российской Федерации,
-     * за исключением индивидуальных предпринимателей, осуществляющих торговлю подакцизными товарами,
-     * требование об обязательном включении в состав кассового чека и БСО реквизита применяется с 1 февраля 2021 года.
-     */
-    public static final int FOR_INDIVIDUAL_ENTREPRENEURS = 0;
 
-    /**
-     * Полная предварительная оплата до момента передачи предмета расчёта
-     */
-    public static final int FULL_PAYMENT_BEFORE = 1;
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public enum PayAttribute {
+    FOR_INDIVIDUAL_ENTREPRENEURS(0),
+    FULL_PAYMENT_BEFORE(1),
+    PART_PAYMENT_BEFORE(2),
+    PREPAID_EXPENSE(3),
+    FULL_PAYMENT(4),
+    PART_PAYMENT(5),
+    WITHOUT_PAYMENT(5),
+    CREDIT_PAYMENT(7);
 
-    /**
-     * Частичная предварительная оплата до момента передачи предмета расчёта
-     */
-    public static final int PART_PAYMENT_BEFORE = 2;
-
-    /**
-     * Аванс
-     */
-    public static final int PREPAID_EXPENSE = 3;
-
-    /**
-     * Полная оплата, в том числе с учётом аванса (предварительной оплаты) в момент передачи предмета расчёта
-     */
-    public static final int FULL_PAYMENT = 4;
-
-    /**
-     * Частичная оплата предмета расчёта в момент его передачи с последующей оплатой в кредит
-     */
-    public static final int PART_PAYMENT = 5;
-
-    /**
-     * Передача предмета расчёта без его оплаты в момент его передачи с последующей оплатой в кредит
-     */
-    public static final int WITHOUT_PAYMENT = 5;
-
-    /**
-     * Оплата предмета расчёта после его передачи с оплатой в кредит (оплата кредита).
-     * Этот признак должен быть единственным в документе и документ с этим признаком может содержать только одну строку.
-     */
-    public static final int CREDIT_PAYMENT = 7;
+    private final int value;
 
 }

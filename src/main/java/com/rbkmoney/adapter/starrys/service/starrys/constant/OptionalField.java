@@ -10,8 +10,7 @@ import lombok.Getter;
 public enum OptionalField {
 
     DEVICE("device"),
-    PAYMENT_TYPE("payment_type"),
-    ;
+    PAYMENT_TYPE("payment_type");
 
     private final String field;
 }

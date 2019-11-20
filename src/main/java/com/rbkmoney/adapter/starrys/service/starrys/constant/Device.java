@@ -1,5 +1,9 @@
 package com.rbkmoney.adapter.starrys.service.starrys.constant;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * Обязательное поле Device может принимать несколько видом значений (тип   строка):
  * 1. Серийный (заводской) номер устройства (строка 20 символов),
@@ -16,6 +20,8 @@ package com.rbkmoney.adapter.starrys.service.starrys.constant;
  * 3. Durations
  * 4. QueueLens
  */
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Device {
 
     public static final String AUTO = "auto";

@@ -16,25 +16,25 @@ public class StarRysClient implements AdapterCashReg {
 
     @Override
     public ResponseEntity<FullResponse> debit(RequestWrapper<ComplexRequest> requestWrapper) {
-        requestWrapper.getRequest().setDocumentType(DocumentType.DEBIT);
+        requestWrapper.getRequest().setDocumentType(DocumentType.DEBIT.getValue());
         return api.complex(requestWrapper);
     }
 
     @Override
     public ResponseEntity<FullResponse> credit(RequestWrapper<ComplexRequest> requestWrapper) {
-        requestWrapper.getRequest().setDocumentType(DocumentType.CREDIT);
+        requestWrapper.getRequest().setDocumentType(DocumentType.CREDIT.getValue());
         return api.complex(requestWrapper);
     }
 
     @Override
     public ResponseEntity<FullResponse> refundDebit(RequestWrapper<ComplexRequest> requestWrapper) {
-        requestWrapper.getRequest().setDocumentType(DocumentType.REFUND_DEBIT);
+        requestWrapper.getRequest().setDocumentType(DocumentType.REFUND_DEBIT.getValue());
         return api.complex(requestWrapper);
     }
 
     @Override
     public ResponseEntity<FullResponse> refundCredit(RequestWrapper<ComplexRequest> requestWrapper) {
-        requestWrapper.getRequest().setDocumentType(DocumentType.REFUND_CREDIT);
+        requestWrapper.getRequest().setDocumentType(DocumentType.REFUND_CREDIT.getValue());
         return api.complex(requestWrapper);
     }
 
