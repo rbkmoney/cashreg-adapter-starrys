@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 public class StarrysClientconfiguration {
 
     @Bean
-    StarRysClient atolClient(ObjectMapper objectMapper, RestTemplate restTemplate, ConverterIp converterIp) {
+    StarRysClient starRysClient(ObjectMapper objectMapper, RestTemplate restTemplate, ConverterIp converterIp) {
         return new StarRysClient(new StarRysApi(restTemplate, objectMapper, converterIp));
     }
 
