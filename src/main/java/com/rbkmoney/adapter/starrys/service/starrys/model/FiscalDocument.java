@@ -22,9 +22,6 @@ public class FiscalDocument {
     @JsonProperty("TagID")
     private Integer tagID;
 
-    /**
-     * e.g. string
-     */
     @JsonProperty("TagType")
     private String tagType;
 

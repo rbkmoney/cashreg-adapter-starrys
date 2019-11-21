@@ -1,7 +1,6 @@
 package com.rbkmoney.adapter.starrys.utils;
 
 
-import com.rbkmoney.adapter.starrys.service.starrys.constant.TaxId;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -9,14 +8,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Vat {
 
-    VAT_0("0%", TaxId.VAT_0, "0% НДС"),
-    VAT_10("10%", TaxId.VAT_10, "10% НДС"),
-    VAT_18("18%", TaxId.VAT_18, "18% НДС"),
-    VAT_20("20%", TaxId.VAT_20, "20% НДС"),
-    NO_VAT("null", TaxId.NO_VAT, "Без НДС"),
-    VAT_10_110("10/110", TaxId.VAT_10_110, "10/110 НДС"),
-    VAT_18_118("18/118", TaxId.VAT_18_118, "18/118 НДС"),
-    VAT_20_120("20/120", TaxId.VAT_20_120, "20/120 НДС");
+    VAT_0("0%", 3, "0% НДС"),
+    VAT_10("10%", 2, "10% НДС"),
+    VAT_18("18%", 1, "18% НДС"),
+    VAT_20("20%", 1, "20% НДС"),
+    NO_VAT("null", 4, "Без НДС"),
+    VAT_10_110("10/110", 6, "10/110 НДС"),
+    VAT_18_118("18/118", 5, "18/118 НДС"),
+    VAT_20_120("20/120", 5, "20/120 НДС");
 
     private final String codeText;
     private final Integer code;

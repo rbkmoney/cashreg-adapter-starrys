@@ -6,7 +6,6 @@ import com.rbkmoney.adapter.cashreg.spring.boot.starter.constant.OptionalField;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.model.EntryStateModel;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.model.Items;
 import com.rbkmoney.adapter.starrys.service.starrys.constant.Device;
-import com.rbkmoney.adapter.starrys.service.starrys.constant.FullResponseType;
 import com.rbkmoney.adapter.starrys.service.starrys.constant.PayAttribute;
 import com.rbkmoney.adapter.starrys.service.starrys.model.Lines;
 import com.rbkmoney.adapter.starrys.service.starrys.model.request.ComplexRequest;
@@ -41,7 +40,7 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
         request.setRequestId(entryStateModel.getCashRegId());
         request.setDevice(Device.AUTO);
         request.setPassword(Integer.valueOf(entryStateModel.getAuth().getPass()));
-        request.setFullResponse(FullResponseType.FALSE);
+        request.setFullResponse(false);
 
         request.setCash(prepareAmount(entryStateModel.getTotal()));
 
@@ -50,7 +49,7 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
          * @see com.rbkmoney.starrys.utils.api.constant.NonCashType
          */
         BigInteger[] nonCash = new BigInteger[]{
-                BigInteger.valueOf(entryStateModel.getTotal().movePointRight(2).longValue()),
+                prepareAmount(entryStateModel.getTotal()),
                 BigInteger.valueOf(0),
                 BigInteger.valueOf(0)
         };
@@ -58,12 +57,13 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
 
         request.setPhoneOrEmail(entryStateModel.getClient().getEmail());
 
-        String group = entryStateModel.getOptions().get(OptionalField.GROUP.getField());
+        Map<String, String> options = entryStateModel.getOptions();
+        String group = options.get(OptionalField.GROUP.getField());
         if (group != null) {
             request.setGroup(group);
         }
 
-        List<Lines> linesList = prepareCart(entryStateModel.getItems(), entryStateModel.getOptions());
+        List<Lines> linesList = prepareCart(entryStateModel.getItems(), options);
         request.setLines(linesList);
 
         if (entryStateModel.getCompany().getSno() != null) {
@@ -72,12 +72,12 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
 
         return new RequestWrapper<>(
                 request,
-                entryStateModel.getOptions().getOrDefault(OptionalField.URL.getField(), adapterCashRegProperties.getUrl()),
-                entryStateModel.getOptions().get(OptionalField.GROUP.getField()),
-                entryStateModel.getOptions().get(OptionalField.COMPANY_NAME.getField()),
-                entryStateModel.getOptions().get(OptionalField.COMPANY_ADDRESS.getField()),
-                entryStateModel.getOptions().get(com.rbkmoney.adapter.starrys.service.starrys.constant.OptionalField.DEVICE.getField()),
-                entryStateModel.getOptions().get(OptionalField.PASS.getField()),
+                options.getOrDefault(OptionalField.URL.getField(), adapterCashRegProperties.getUrl()),
+                options.get(OptionalField.GROUP.getField()),
+                options.get(OptionalField.COMPANY_NAME.getField()),
+                options.get(OptionalField.COMPANY_ADDRESS.getField()),
+                options.get(com.rbkmoney.adapter.starrys.service.starrys.constant.OptionalField.DEVICE.getField()),
+                options.get(OptionalField.PASS.getField()),
                 DEFAULT_EMPTY_VALUE_TOKEN_API
         );
     }

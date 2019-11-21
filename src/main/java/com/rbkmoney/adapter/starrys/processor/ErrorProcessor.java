@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 
+import static com.rbkmoney.adapter.cashreg.spring.boot.starter.constant.Error.UNKNOWN;
+
 @Slf4j
 @RequiredArgsConstructor
 public class ErrorProcessor implements Processor<ExitStateModel, EntryStateModel, ResponseEntity<FullResponse>> {
@@ -21,8 +23,8 @@ public class ErrorProcessor implements Processor<ExitStateModel, EntryStateModel
             exitStateModel.setEntryStateModel(entryStateModel);
         } else {
             log.error("Unknown result code for response: {}!", response);
-            exitStateModel.setErrorCode(com.rbkmoney.adapter.cashreg.spring.boot.starter.constant.Error.UNKNOWN.getCode());
-            exitStateModel.setErrorMessage(com.rbkmoney.adapter.cashreg.spring.boot.starter.constant.Error.UNKNOWN.getMessage());
+            exitStateModel.setErrorCode(UNKNOWN.getCode());
+            exitStateModel.setErrorMessage(UNKNOWN.getMessage());
         }
         return exitStateModel;
     }
