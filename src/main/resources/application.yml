@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: @name@
+    description: @description@
+---
+info:
+  version: @version@
+  responsible: Anatoly Cherkasov
+  stage: dev
+---
+management:
+  metrics:
+    export:
+      statsd:
+        flavor: etsy
+        enabled: false
+---
+server:
+  port: @server.port@
+---
+restTemplate:
+  requestTimeout: 60000
+  poolTimeout: 10000
+  connectionTimeout: 10000
+  maxTotalPooling: 200
+  defaultMaxPerRoute: 200
+---
+converterIp:
+  nat64prefix: "2a04:4a00:5:10ff:4:1:"
+---
+adapter-cashreg:
+  url: "https://fce.starrys.ru:4443/fr/api/v2/"
+---
+error-mapping:
+  file: classpath:fixture/errors.json
+  patternReason: "'%s' - '%s'" # 'code' - 'description'
