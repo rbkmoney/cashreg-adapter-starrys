@@ -1,7 +1,6 @@
 package com.rbkmoney.adapter.starrys.converter;
 
-
-import com.rbkmoney.adapter.cashreg.spring.boot.starter.config.properties.AdapterCashRegProperties;
+import com.rbkmoney.adapter.cashreg.spring.boot.starter.config.properties.AdapterCashregProperties;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.constant.OptionalField;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.model.EntryStateModel;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.model.Items;
@@ -11,7 +10,7 @@ import com.rbkmoney.adapter.starrys.service.starrys.model.Lines;
 import com.rbkmoney.adapter.starrys.service.starrys.model.request.ComplexRequest;
 import com.rbkmoney.adapter.starrys.service.starrys.model.request.RequestWrapper;
 import com.rbkmoney.adapter.starrys.utils.Vat;
-import com.rbkmoney.damsel.cashreg_domain.TaxMode;
+import com.rbkmoney.damsel.cashreg.domain.TaxMode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -24,14 +23,13 @@ import java.util.stream.Collectors;
 
 import static com.rbkmoney.adapter.starrys.service.starrys.constant.TaxMode.*;
 
-
 @Component
 @RequiredArgsConstructor
 public class EntryStateToCommonRequestConverter implements Converter<EntryStateModel, RequestWrapper<ComplexRequest>> {
 
     private static final String DEFAULT_EMPTY_VALUE_TOKEN_API = "";
 
-    private final AdapterCashRegProperties adapterCashRegProperties;
+    private final AdapterCashregProperties adapterCashregProperties;
 
     @Override
     public RequestWrapper<ComplexRequest> convert(EntryStateModel entryStateModel) {
@@ -72,7 +70,7 @@ public class EntryStateToCommonRequestConverter implements Converter<EntryStateM
 
         return new RequestWrapper<>(
                 request,
-                options.getOrDefault(OptionalField.URL.getField(), adapterCashRegProperties.getUrl()),
+                options.getOrDefault(OptionalField.URL.getField(), adapterCashregProperties.getUrl()),
                 options.get(OptionalField.GROUP.getField()),
                 options.get(OptionalField.COMPANY_NAME.getField()),
                 options.get(OptionalField.COMPANY_ADDRESS.getField()),

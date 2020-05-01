@@ -8,7 +8,7 @@ import com.rbkmoney.adapter.cashreg.spring.boot.starter.processor.Processor;
 import com.rbkmoney.adapter.starrys.service.starrys.model.response.FullResponse;
 import com.rbkmoney.adapter.starrys.service.starrys.model.response.Response;
 import com.rbkmoney.adapter.starrys.utils.ErrorUtils;
-import com.rbkmoney.damsel.cashreg.CashRegInfo;
+import com.rbkmoney.damsel.cashreg.receipt.ReceiptInfo;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,16 +27,16 @@ public class SuccessProcessor implements Processor<ExitStateModel, EntryStateMod
             AdapterState adapterState = entryStateModel.getState().getAdapterContext();
             FullResponse fullResponse = responseEntity.getBody();
             adapterState.setReceiptId(fullResponse.getRequestId());
-            adapterState.setCashRegId(entryStateModel.getCashRegId());
+            adapterState.setCashregId(entryStateModel.getCashRegId());
 
             if (isDelivered(responseEntity)) {
                 Response response = fullResponse.getResponse();
-                CashRegInfo cashRegInfo = new CashRegInfo();
-                cashRegInfo.setReceiptId(response.getRequestId());
-                cashRegInfo.setTimestamp(response.getDateTime().toString());
-                cashRegInfo.setFnNumber(response.getFiscalDocNumber().toString());
-                cashRegInfo.setTotal(response.getGrandTotal().toString());
-                exitStateModel.setCashRegInfo(cashRegInfo);
+                ReceiptInfo receiptInfo = new ReceiptInfo()
+                .setReceiptId(response.getRequestId())
+                        .setTimestamp(response.getDateTime().toString())
+                        .setFnNumber(response.getFiscalDocNumber().toString())
+                        .setTotal(response.getGrandTotal().toString());
+                exitStateModel.setInfo(receiptInfo);
             }
 
             exitStateModel.setAdapterContext(adapterState);
