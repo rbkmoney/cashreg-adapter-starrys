@@ -32,7 +32,7 @@ public class SuccessProcessor implements Processor<ExitStateModel, EntryStateMod
             if (isDelivered(responseEntity)) {
                 Response response = fullResponse.getResponse();
                 ReceiptInfo receiptInfo = new ReceiptInfo()
-                .setReceiptId(response.getRequestId())
+                        .setReceiptId(response.getRequestId())
                         .setTimestamp(response.getDateTime().toString())
                         .setFnNumber(response.getFiscalDocNumber().toString())
                         .setTotal(response.getGrandTotal().toString());
