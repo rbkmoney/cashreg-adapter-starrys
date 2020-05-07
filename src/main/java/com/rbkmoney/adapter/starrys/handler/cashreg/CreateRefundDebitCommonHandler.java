@@ -1,6 +1,5 @@
 package com.rbkmoney.adapter.starrys.handler.cashreg;
 
-
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.constant.TargetType;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.handler.CommonHandlerImpl;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.model.EntryStateModel;
@@ -14,7 +13,6 @@ import com.rbkmoney.adapter.starrys.service.starrys.model.response.FullResponse;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-
 
 @Component
 public class CreateRefundDebitCommonHandler extends CommonHandlerImpl<ExitStateModel, RequestWrapper<ComplexRequest>, ResponseEntity<FullResponse>, EntryStateModel> {

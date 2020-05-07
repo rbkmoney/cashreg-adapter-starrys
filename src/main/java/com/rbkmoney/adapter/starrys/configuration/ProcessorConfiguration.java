@@ -1,6 +1,5 @@
 package com.rbkmoney.adapter.starrys.configuration;
 
-
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.model.EntryStateModel;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.model.ExitStateModel;
 import com.rbkmoney.adapter.cashreg.spring.boot.starter.processor.Processor;
