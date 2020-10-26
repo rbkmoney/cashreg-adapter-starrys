@@ -48,7 +48,7 @@ public class SuccessProcessor implements Processor<ExitStateModel, EntryStateMod
 
     public boolean isDelivered(ResponseEntity<FullResponse> entity) {
         FullResponse fullResponse = entity.getBody();
-        return  HttpStatus.SC_OK == entity.getStatusCode().value() && fullResponse != null && fullResponse.getResponse().getError() == 0;
+        return HttpStatus.SC_OK == entity.getStatusCode().value() && fullResponse != null && fullResponse.getResponse().getError() == 0;
     }
 
 }

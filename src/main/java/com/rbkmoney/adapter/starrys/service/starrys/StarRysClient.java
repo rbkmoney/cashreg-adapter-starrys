@@ -38,9 +38,4 @@ public class StarRysClient implements AdapterCashReg {
         return api.complex(requestWrapper);
     }
 
-    @Override
-    public ResponseEntity<FullResponse> status(RequestWrapper<ComplexRequest> request) {
-        throw new RuntimeException();
-    }
-
 }

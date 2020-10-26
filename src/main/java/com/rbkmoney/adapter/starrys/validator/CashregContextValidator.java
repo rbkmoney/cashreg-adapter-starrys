@@ -26,5 +26,5 @@ public class CashregContextValidator implements Validator<CashregContext> {
         Objects.requireNonNull(options.get(OptionalField.COMPANY_ADDRESS.getField()), "Option 'companyAddress' must be set");
         Objects.requireNonNull(options.get(OptionalField.PASS.getField()), "Option 'pass' must be set");
     }
-    
+
 }

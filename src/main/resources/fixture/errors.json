@@ -1,0 +1,7 @@
+[
+  {
+    "codeRegex": "1",
+    "descriptionRegex": "test",
+    "mapping": "authorization_failed:operation_blocked"
+  }
+]

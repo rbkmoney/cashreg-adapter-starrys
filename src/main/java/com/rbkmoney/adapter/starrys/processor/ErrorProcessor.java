@@ -19,8 +19,13 @@ public class ErrorProcessor implements Processor<ExitStateModel, EntryStateModel
     @Override
     public ExitStateModel process(ResponseEntity<FullResponse> response, EntryStateModel entryStateModel) {
         ExitStateModel exitStateModel = new ExitStateModel();
+        exitStateModel.setEntryStateModel(entryStateModel);
+        if (entryStateModel.getState().getAdapterContext() != null) {
+            exitStateModel.setAdapterContext(entryStateModel.getState().getAdapterContext());
+        }
         if (ErrorUtils.hasError(response)) {
-            exitStateModel.setEntryStateModel(entryStateModel);
+            exitStateModel.setErrorCode(response.getBody().getResponse().getError().toString());
+            exitStateModel.setErrorMessage(response.getBody().getResponse().getDescription());
         } else {
             log.error("Unknown result code for response: {}!", response);
             exitStateModel.setErrorCode(UNKNOWN.getCode());
