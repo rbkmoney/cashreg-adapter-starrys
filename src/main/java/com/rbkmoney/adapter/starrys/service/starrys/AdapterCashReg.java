@@ -15,6 +15,4 @@ public interface AdapterCashReg {
 
     ResponseEntity<FullResponse> refundCredit(RequestWrapper<ComplexRequest> request);
 
-    ResponseEntity<FullResponse> status(RequestWrapper<ComplexRequest> request);
-
 }

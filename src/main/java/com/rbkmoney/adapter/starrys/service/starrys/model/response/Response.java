@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rbkmoney.adapter.starrys.service.starrys.model.DateTime;
 import com.rbkmoney.adapter.starrys.service.starrys.model.FiscalDocument;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,9 +13,7 @@ import lombok.ToString;
 import java.math.BigInteger;
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response {
